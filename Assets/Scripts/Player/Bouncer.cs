@@ -6,7 +6,7 @@ public class Bouncer : Enemy
 {
 
     [SerializeField] float bounceAmount = 1000f;
-    [SerializeField] int _damageAmount = 1;
+    [SerializeField] int _bouncerAmount = 1;
 
     protected override void PlayerImpact(Player player)
     {
@@ -18,7 +18,7 @@ public class Bouncer : Enemy
         if(playerRigidbody != null)
         {
             // get player velocity, revert it
-            player.DecreaseHealth(_damageAmount);
+            player.DecreaseHealth(_bouncerAmount);
 
             Vector3 bounceDirection = -playerRigidbody.velocity;
 

@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     BallMotor _ballMotor;
     [SerializeField] Text _treasureScore;
 
+    Renderer rend;
+
     private void Awake()
     {
         _ballMotor = GetComponent<BallMotor>();
@@ -21,6 +23,12 @@ public class Player : MonoBehaviour
     {
         _currentHealth = _maxHealth;
         _treasureCount = 0;
+    }
+
+    public void IsInvincible()
+    {
+        rend.material.SetColor("_color", Color.green);
+        _currentHealth += 100;
     }
 
     public void IncreaseTreasure(int amount)
