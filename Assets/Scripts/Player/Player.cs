@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     int _currentHealth;
     BallMotor _ballMotor;
     [SerializeField] Text _treasureScore;
+    [SerializeField] Text _healthScore;
 
     Renderer rend;
 
@@ -27,7 +28,7 @@ public class Player : MonoBehaviour
 
     public void IsInvincible()
     {
-        rend.material.SetColor("_color", Color.green);
+        rend.material.SetColor("_color", Color.blue);
         _currentHealth += 100;
     }
 
@@ -43,12 +44,14 @@ public class Player : MonoBehaviour
         _currentHealth += amount;
         _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
         Debug.Log("Player's health: " + _currentHealth);
+        _healthScore.text = "health: " + _currentHealth.ToString();
     }
 
     public void DecreaseHealth(int amount)
     {
         _currentHealth -= amount;
         Debug.Log("Player's health: " + _currentHealth);
+        _healthScore.text = "health: " + _currentHealth.ToString();
         if (_currentHealth <=0)
         {
             Kill();
